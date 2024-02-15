@@ -145,7 +145,8 @@ def main():
         else :  # if using class filter, set confidence for each class
             for parameter in detection_parameters_rt.object_class_filter:
                 detection_parameters_rt.object_class_detection_confidence_threshold[parameter] = detection_confidence
-        
+
+        # waragai:
         returned_state = zed.retrieve_objects(objects, detection_parameters_rt)
         if returned_state == sl.ERROR_CODE.SUCCESS:
             if opt.enable_batching_reid:
