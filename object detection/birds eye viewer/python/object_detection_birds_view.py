@@ -38,19 +38,6 @@ is_jetson = False
 
 use_faceme = True
 
-if use_faceme:
-    import faceme_wrapper
-    testimg = "/home/waragai/github/ex-faceme/images/each_face/わらがい.jpg"
-    img = cv2.imread(testimg)
-    recognize_results, search_results = faceme_wrapper.process_image(img)
-    out_cvimg = img
-    out_cvimg = faceme_wrapper.draw_recognized(out_cvimg, recognize_results, search_results)
-    cv2.imwrite("out_cvimg.jpg", out_cvimg)
-    cv2.imshow("out", out_cvimg)
-    key = cv2.waitKey(0)
-    cv2.destroyAllWindows()
-
-
 if platform.uname().machine.startswith('aarch64'):
     is_jetson = True
 
