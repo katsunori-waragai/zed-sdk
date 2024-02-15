@@ -178,8 +178,6 @@ def main():
                     summary = faceme_wrapper.bbox_and_name(recognize_results, search_results)
                     print(summary)
                     image_left_ocv = faceme_wrapper.draw_recognized(image_left_ocv, recognize_results, search_results)
-                    cv2.imwrite("out_cvimg.jpg", image_left_ocv)
-                    # cv2.imshow("out", out_cvimg)
 
                 track_view_generator.generate_view(objects, image_left_ocv,image_scale ,cam_w_pose, image_track_ocv, objects.is_tracked)
                 global_image = cv2.hconcat([image_left_ocv,image_track_ocv])
