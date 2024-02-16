@@ -152,14 +152,13 @@ def main():
 
         # waragai: ここで, objectsが取得される。
         returned_state = zed.retrieve_objects(objects, detection_parameters_rt)
+
         if returned_state == sl.ERROR_CODE.SUCCESS:
             if opt.enable_batching_reid:
                 # objectsにはobject_list というListがある。
                 for object in objects.object_list : 
                     id_counter[str(object.id)] = 1
-                    # waragai
-                    print(f"{inspect.getmembers(object)=}")
-                        
+
                 #check if batched trajectories are available 
                 objects_batch = [] 
                 if zed.get_objects_batch(objects_batch) == sl.ERROR_CODE.SUCCESS:
@@ -172,6 +171,11 @@ def main():
                             print(it.id, end=" ")
                         print()
                         id_counter.clear()
+
+            # waragai
+            for object in objects.object_list:
+                print(f"{inspect.getmembers(object)=}")
+
             if not opt.disable_gui:
                 
                 zed.retrieve_measure(point_cloud, sl.MEASURE.XYZRGBA, sl.MEM.CPU, pc_resolution)
