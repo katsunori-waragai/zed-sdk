@@ -158,7 +158,7 @@ def main():
                 for object in objects.object_list : 
                     id_counter[str(object.id)] = 1
                     # waragai
-                    print(f"{inspect.getmembers=}")
+                    print(f"{inspect.getmembers(object)=}")
                         
                 #check if batched trajectories are available 
                 objects_batch = [] 
