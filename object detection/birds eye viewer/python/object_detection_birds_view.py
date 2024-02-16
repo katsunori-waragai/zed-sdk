@@ -173,7 +173,7 @@ def main():
                         id_counter.clear()
 
             # waragai
-            print("")
+            print("------")
             for object in objects.object_list:
                 # print(f"{inspect.getmembers(object)=}")
                 for key, val in inspect.getmembers(object):
