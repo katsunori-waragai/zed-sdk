@@ -173,12 +173,13 @@ def main():
                         id_counter.clear()
 
             # waragai
+            print("")
             for object in objects.object_list:
-                print(f"{inspect.getmembers(object)=}")
+                # print(f"{inspect.getmembers(object)=}")
                 for key, val in inspect.getmembers(object):
                     if key[:2] != "__":
                         print(key, val)
-                print(f"{object.bouding_box=}")
+                print(f"{object.bounding_box=}")
 
             if not opt.disable_gui:
                 
