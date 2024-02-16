@@ -24,6 +24,8 @@
 """
 
 import sys
+import inspect
+
 import numpy as np
 import cv2
 import pyzed.sl as sl
@@ -155,6 +157,8 @@ def main():
                 # objectsにはobject_list というListがある。
                 for object in objects.object_list : 
                     id_counter[str(object.id)] = 1
+                    # waragai
+                    print(f"{inspect.getmembers=}")
                         
                 #check if batched trajectories are available 
                 objects_batch = [] 
