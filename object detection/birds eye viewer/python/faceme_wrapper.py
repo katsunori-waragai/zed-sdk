@@ -27,7 +27,9 @@ def initialize_SDK():
     app_bundle_path = os.path.dirname(os.path.realpath(__file__))
     app_cache_path = os.path.join(os.getenv('HOME'), ".cache")
     app_data_path = os.path.join(os.getenv('HOME'), ".local", "share")
-    options = {}
+    options = {
+        "minFaceWidthRatio": 0.05,
+    }
 
     ret = faceMe_sdk.initialize(LICENSE_KEY, app_bundle_path, app_cache_path, app_data_path, options)
     if FR_FAILED(ret):
