@@ -148,10 +148,11 @@ def main():
             for parameter in detection_parameters_rt.object_class_filter:
                 detection_parameters_rt.object_class_detection_confidence_threshold[parameter] = detection_confidence
 
-        # waragai:
+        # waragai: ここで, objectsが取得される。
         returned_state = zed.retrieve_objects(objects, detection_parameters_rt)
         if returned_state == sl.ERROR_CODE.SUCCESS:
             if opt.enable_batching_reid:
+                # objectsにはobject_list というListがある。
                 for object in objects.object_list : 
                     id_counter[str(object.id)] = 1
                         
@@ -176,6 +177,7 @@ def main():
                 np.copyto(image_left_ocv,image_render_left)  # dst, src
                 if use_faceme:
                     # waragai: Here we have image_left
+                    # bbox を包含するPersonのbboxが一つならば、対応付けは簡単。
                     cvimage = image_left.get_data()
                     recognize_results, search_results = faceme_wrapper.process_image(cvimage)
                     summary = faceme_wrapper.bbox_and_name(recognize_results, search_results)
