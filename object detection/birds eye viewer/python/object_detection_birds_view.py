@@ -175,6 +175,10 @@ def main():
             # waragai
             for object in objects.object_list:
                 print(f"{inspect.getmembers(object)=}")
+                for key, val in inspect.getmembers(object):
+                    if key[:2] != "__":
+                        print(key, val)
+                print(f"{object.bouding_box=}")
 
             if not opt.disable_gui:
                 
