@@ -180,6 +180,10 @@ def main():
                     if key[:2] != "__":
                         print(key, val)
                 print(f"{object.bounding_box=}")
+                print(f"{object.bounding_box_2d=}")
+                print(f"{object.label=}")
+                print(f"{object.confidence=}")
+
 
             if not opt.disable_gui:
                 
