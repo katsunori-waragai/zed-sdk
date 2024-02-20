@@ -132,7 +132,7 @@ class TrackingViewer:
                     overlay[roi[0][1]:roi[1][1], roi[0][0]:roi[1][0]] = base_color
                 position_image = getImagePosition(obj.bounding_box_2d, img_scale)
                 color = (0, 0, 255, 255)
-                width = 3
+                width = 2
                 cv2.putText(left_display, str(obj.label), (int(position_image[0]) - 20, int(position_image[1]) - 12),
                             cv2.FONT_HERSHEY_COMPLEX_SMALL, 1.0, color, width)
                 cv2.putText(left_display, "ID " + str(obj.id), (int(position_image[0]) - 20, int(position_image[1]) - 30),
