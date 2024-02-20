@@ -201,7 +201,7 @@ def main():
                     summary = faceme_wrapper.bbox_and_name(recognize_results, search_results)
                     print(f"{summary=}")
 
-                    name_to_view = id2person_name.get(object.id, default="unknown")
+                    name_to_view = id2person_name.get(object.id, "unknown")
                     if len(summary) > 0:
                         _, (p1, p2), person_name = summary[0]
                         if object.id not in id2person_name or (person_name.lower() not in ("visitor", "")):
