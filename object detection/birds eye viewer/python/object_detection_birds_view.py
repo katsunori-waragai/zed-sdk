@@ -208,7 +208,7 @@ def main():
                         p2 = (p2[0] + xl, p2[1] + yu)
                         # 描画する
                         cv2.rectangle(image_left_ocv, p1, p2, (0, 255, 0), thickness=3)
-                        faceme_wrapper.putText_utf(image_left_ocv, unicode_text=person_name, org=p1, font_size=36, color=(255, 0, 0))
+                        image_left_ocv = faceme_wrapper.putText_utf(image_left_ocv, unicode_text=person_name, org=p1, font_size=36, color=(255, 0, 0))
                 print(f"{id2person_name=}")
             if not opt.disable_gui:
                 zed.retrieve_measure(point_cloud, sl.MEASURE.XYZRGBA, sl.MEM.CPU, pc_resolution)
