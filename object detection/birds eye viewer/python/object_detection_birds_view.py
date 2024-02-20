@@ -201,12 +201,11 @@ def main():
                     summary = faceme_wrapper.bbox_and_name(recognize_results, search_results)
                     print(f"{summary=}")
                     if len(summary) > 0:
-                        person_name = summary[0][2]
-                        id2person_name[object.id] = summary[0][2]
-                        p1, p2 = summary[0][1]
+                        _, (p1, p2), person_name = summary[0]
+                        if object.id not in id2person_name:
+                            id2person_name[object.id] = person_name
                         p1 = (p1[0] + xl, p1[1] + yu)
                         p2 = (p2[0] + xl, p2[1] + yu)
-                        # 描画する
                         cv2.rectangle(image_left_ocv, p1, p2, (0, 255, 0), thickness=3)
                         image_left_ocv = faceme_wrapper.putText_utf(image_left_ocv, unicode_text=person_name, org=p1, font_size=36, color=(255, 0, 0))
                 print(f"{id2person_name=}")
