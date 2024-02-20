@@ -139,14 +139,14 @@ def bbox_and_name(recognize_results: List, search_results: List) -> List:
     """
     :param recognize_results:
     :param search_results:
-    :return:
+    :return: List of (imageIndex, bbox, name)
     """
     r = []
     for recognized, searched in zip(recognize_results, search_results):
         ret, similar_faces = searched
         person = similar_faces[0]["name"] if similar_faces else "visitor"
         recognized["boundingBox"]
-        r.append((recognized["boundingBox"], person))
+        r.append((recognized["imageIndex"], recognized["boundingBox"], person))
     return r
 
 def process_image(img: np.ndarray) -> Tuple[Dict, Dict]:
