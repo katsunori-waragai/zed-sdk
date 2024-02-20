@@ -178,6 +178,8 @@ def main():
             print("------")
             zed.retrieve_image(image_left, sl.VIEW.LEFT, sl.MEM.CPU, display_resolution)
             image_render_left = image_left.get_data()
+            np.copyto(image_left_ocv, image_render_left)  # dst, src
+
             for object in objects.object_list:
                 print("key, val start")
                 for key, val in inspect.getmembers(object):
@@ -204,14 +206,11 @@ def main():
                         p1 = (p1[0] + xl, p1[1] + yu)
                         p2 = (p2[0] + xl, p2[1] + yu)
                         # 描画する
+                        cv2.rectangle(image_left_ocv, p1, p2, (0, 255, 0), thickness=3)
                 print(f"{id2person_name=}")
             if not opt.disable_gui:
-                
                 zed.retrieve_measure(point_cloud, sl.MEASURE.XYZRGBA, sl.MEM.CPU, pc_resolution)
                 zed.get_position(cam_w_pose, sl.REFERENCE_FRAME.WORLD)  # cam_w_pos: camera world position
-                zed.retrieve_image(image_left, sl.VIEW.LEFT, sl.MEM.CPU, display_resolution)
-                image_render_left = image_left.get_data()
-                np.copyto(image_left_ocv,image_render_left)  # dst, src
                 if 0 and use_faceme:
                     # waragai: Here we have image_left
                     # bbox を包含するPersonのbboxが一つならば、対応付けは簡単。
