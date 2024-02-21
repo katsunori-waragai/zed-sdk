@@ -245,14 +245,7 @@ def main():
             if not opt.disable_gui:
                 zed.retrieve_measure(point_cloud, sl.MEASURE.XYZRGBA, sl.MEM.CPU, pc_resolution)
                 zed.get_position(cam_w_pose, sl.REFERENCE_FRAME.WORLD)  # cam_w_pos: camera world position
-                if 0 and use_faceme:
-                    # waragai: Here we have image_left
-                    # bbox を包含するPersonのbboxが一つならば、対応付けは簡単。
-                    cvimage = image_left.get_data()
-                    recognize_results, search_results = faceme_wrapper.process_image(cvimage)
-                    summary = faceme_wrapper.bbox_and_name(recognize_results, search_results)
-                    print(summary)
-                    image_left_ocv = faceme_wrapper.draw_recognized(image_left_ocv, recognize_results, search_results)
+                # 描画は上に移動した。
 
                 track_view_generator.generate_view(objects, image_left_ocv,image_scale ,cam_w_pose, image_track_ocv, objects.is_tracked)
                 # left part: 左カメラ画像 , right part :　top view のtracking　画像
