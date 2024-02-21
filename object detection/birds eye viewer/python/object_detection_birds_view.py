@@ -41,7 +41,7 @@ is_jetson = False
 
 use_faceme = True
 
-SHOW_OBJECT = True
+SHOW_OBJECT = False
 
 if platform.uname().machine.startswith('aarch64'):
     is_jetson = True
