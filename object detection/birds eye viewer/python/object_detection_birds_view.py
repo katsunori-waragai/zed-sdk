@@ -218,6 +218,7 @@ def main():
                     box3d = util.bbox_to_xyzxyz(object.bounding_box)
                     print(f"{box3d=}")
                     (xmin, ymin, zmin), (xmax, ymax, zmax) = box3d
+                    # 床の高さがきちんと算出されているかどうかで、yのsizeは影響を受ける。
                     print(f"{xmax - xmin:.2f}")  # right  left +: 画像上を右にあるとき
                     print(f"{ymax - ymin:.2f}")  # height +: upper
                     print(f"{zmax - zmin:.2f}")  # カメラから遠くなるほど、−の値が大きくなる。
