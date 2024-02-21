@@ -95,10 +95,11 @@ def main():
     detection_confidence = 60
     detection_parameters_rt = sl.ObjectDetectionRuntimeParameters(detection_confidence)
     # To select a set of specific object classes:
-    detection_parameters_rt.object_class_filter = [sl.OBJECT_CLASS.VEHICLE, sl.OBJECT_CLASS.PERSON]
+    detection_parameters_rt.object_class_filter = [sl.OBJECT_CLASS.VEHICLE, sl.OBJECT_CLASS.PERSON, sl.OBJECT_CLASS.CUP]
     # To set a specific threshold
     detection_parameters_rt.object_class_detection_confidence_threshold[sl.OBJECT_CLASS.PERSON] = detection_confidence
     detection_parameters_rt.object_class_detection_confidence_threshold[sl.OBJECT_CLASS.VEHICLE] = detection_confidence
+    detection_parameters_rt.object_class_detection_confidence_threshold[sl.OBJECT_CLASS.CUP] = detection_confidence
 
     if use_faceme:
         import faceme_wrapper
