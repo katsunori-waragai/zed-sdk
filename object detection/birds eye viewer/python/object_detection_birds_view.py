@@ -215,7 +215,12 @@ def main():
                     print(f"{object.bounding_box_2d=}")
                     print(f"{object.label=}")
                     print(f"{object.confidence=}")
-                    print(f"{util.bbox_to_xyzxyz(object.bounding_box)=}")
+                    box3d = util.bbox_to_xyzxyz(object.bounding_box)
+                    print(f"{box3d=}")
+                    (xmin, ymin, zmin), (xmax, ymax, zmax) = box3d
+                    print(f"{xmax - xmin}=")
+                    print(f"{ymax - ymin}=")
+                    print(f"{zmax - zmin}=")
 
                 if use_faceme:
                     if object.label == sl.OBJECT_CLASS.PERSON:
