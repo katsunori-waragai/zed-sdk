@@ -200,7 +200,6 @@ def main():
                         print()
                         id_counter.clear()
 
-            # waragai
             zed.retrieve_image(image_left, sl.VIEW.LEFT, sl.MEM.CPU, display_resolution)
             image_render_left = image_left.get_data()
             np.copyto(image_left_ocv, image_render_left)  # dst, src
@@ -223,7 +222,8 @@ def main():
                         subimage = image_render_left[yu:yd, xl:xr, :].copy()
                         recognize_results, search_results = faceme_wrapper.process_image(subimage)
                         summary = faceme_wrapper.bbox_and_name(recognize_results, search_results)
-                        print(f"{summary=}")
+                        if SHOW_OBJECT:
+                            print(f"{summary=}")
 
                         name_to_view = id2person_name.get(object.id, "unknown")
                         if len(summary) > 0:
