@@ -41,7 +41,7 @@ is_jetson = False
 
 use_faceme = True
 
-SHOW_OBJECT = False
+SHOW_OBJECT = True
 
 if platform.uname().machine.startswith('aarch64'):
     is_jetson = True
@@ -215,6 +215,8 @@ def main():
                     print(f"{object.bounding_box_2d=}")
                     print(f"{object.label=}")
                     print(f"{object.confidence=}")
+                    print(f"{util.bbox_to_xyzxyz(object.bounding_box)=}")
+
                 if use_faceme:
                     if object.label == sl.OBJECT_CLASS.PERSON:
                         bbox = util.bbox_to_xyxy(object.bounding_box_2d)
