@@ -95,11 +95,27 @@ def main():
     detection_confidence = 60
     detection_parameters_rt = sl.ObjectDetectionRuntimeParameters(detection_confidence)
     # To select a set of specific object classes:
-    detection_parameters_rt.object_class_filter = [sl.OBJECT_CLASS.VEHICLE, sl.OBJECT_CLASS.PERSON, sl.OBJECT_CLASS.CUP]
+
+    """
+    今回検出可能な対象物は、pyzed/sl/OBJECT_CLASS.pyの中にある
+    以下の対象物に限られます。（８０カテゴリあるMS-COCOとは異なります。）
+    _value2member_map_ = {
+        0: Person,
+        1: Vehicle,
+        2: Bag,
+        3: Animal,
+        4: Electronics,
+        5: Fruit-Vegetable,
+        6: Sport,
+        7: Unknown,
+    }
+    """
+
+    detection_parameters_rt.object_class_filter = [sl.OBJECT_CLASS.VEHICLE, sl.OBJECT_CLASS.PERSON, sl.OBJECT_CLASS.BAG]
     # To set a specific threshold
     detection_parameters_rt.object_class_detection_confidence_threshold[sl.OBJECT_CLASS.PERSON] = detection_confidence
     detection_parameters_rt.object_class_detection_confidence_threshold[sl.OBJECT_CLASS.VEHICLE] = detection_confidence
-    detection_parameters_rt.object_class_detection_confidence_threshold[sl.OBJECT_CLASS.CUP] = detection_confidence
+    detection_parameters_rt.object_class_detection_confidence_threshold[sl.OBJECT_CLASS.BAG] = detection_confidence
 
     if use_faceme:
         import faceme_wrapper
