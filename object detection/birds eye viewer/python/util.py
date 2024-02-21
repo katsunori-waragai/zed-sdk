@@ -70,5 +70,5 @@ if __name__ == "__main__":
                     [0.64953876, -0.31534344, -0.15461853]
                   ]
 
-    box = bbox_to_xyzxyz(bounding_box)
+    box = bbox_to_xyzxyz(bounding_box, as_int=False)
     print(box)
