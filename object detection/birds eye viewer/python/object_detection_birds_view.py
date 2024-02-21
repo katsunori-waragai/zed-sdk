@@ -218,7 +218,7 @@ def main():
                     print(f"{object.label=}")
                     print(f"{object.confidence=}")
                 if use_faceme:
-                    if object.label == sl.OBJECT_CLASS.PERSON
+                    if object.label == sl.OBJECT_CLASS.PERSON:
                         bbox = util.bbox_to_xyxy(object.bounding_box_2d)
                         (xl, yu), (xr, yd) = bbox
                         subimage = image_render_left[yu:yd, xl:xr, :].copy()
