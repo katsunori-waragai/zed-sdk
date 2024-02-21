@@ -35,10 +35,13 @@ import cv_viewer.tracking_viewer as cv_viewer
 import platform
 from collections import deque
 
+import util
 
 is_jetson = False
 
 use_faceme = True
+
+SHOW_OBJECT = True
 
 if platform.uname().machine.startswith('aarch64'):
     is_jetson = True
@@ -177,13 +180,11 @@ def main():
             for parameter in detection_parameters_rt.object_class_filter:
                 detection_parameters_rt.object_class_detection_confidence_threshold[parameter] = detection_confidence
 
-        # waragai: ここで, objectsが取得される。
         returned_state = zed.retrieve_objects(objects, detection_parameters_rt)
 
         if returned_state == sl.ERROR_CODE.SUCCESS:
             if opt.enable_batching_reid:
-                # objectsにはobject_list というListがある。
-                for object in objects.object_list : 
+                for object in objects.object_list :
                     id_counter[str(object.id)] = 1
 
                 #check if batched trajectories are available 
@@ -206,21 +207,19 @@ def main():
             np.copyto(image_left_ocv, image_render_left)  # dst, src
 
             for object in objects.object_list:
-                print("key, val start")
-                for key, val in inspect.getmembers(object):
-                    if key[:2] != "__":
-                        print(key, val)
-                print("key, val end")
-                print(f"{object.bounding_box=}")
-                print(f"{object.bounding_box_2d=}")
-                print(f"{object.label=}")
-                print(f"{type(object.label)=}")
-                print(f"{object.confidence=}")
+                if SHOW_OBJECT:
+                    print("key, val start")
+                    for key, val in inspect.getmembers(object):
+                        if key[:2] != "__":
+                            print(key, val)
+                    print("key, val end")
+                    print(f"{object.bounding_box=}")
+                    print(f"{object.bounding_box_2d=}")
+                    print(f"{object.label=}")
+                    print(f"{object.confidence=}")
                 if use_faceme:
-                    import util
-                    if str(object.label) == "Person":  # 本当はEnum型
+                    if object.label == sl.OBJECT_CLASS.PERSON
                         bbox = util.bbox_to_xyxy(object.bounding_box_2d)
-                        print(f"{bbox=}")
                         (xl, yu), (xr, yd) = bbox
                         subimage = image_render_left[yu:yd, xl:xr, :].copy()
                         recognize_results, search_results = faceme_wrapper.process_image(subimage)
