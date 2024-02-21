@@ -111,11 +111,19 @@ def main():
     }
     """
 
-    detection_parameters_rt.object_class_filter = [sl.OBJECT_CLASS.VEHICLE, sl.OBJECT_CLASS.PERSON, sl.OBJECT_CLASS.BAG]
+    detection_parameters_rt.object_class_filter = [sl.OBJECT_CLASS.VEHICLE, sl.OBJECT_CLASS.PERSON, sl.OBJECT_CLASS.BAG,
+                                                   sl.OBJECT_CLASS.ANIMAL, sl.OBJECT_CLASS.ELECTRONICS,
+                                                   sl.OBJECT_CLASS.FRUIT_VEGITABLE, sl.OBJECT_CLASS.SPORT,
+                                                   sl.OBJECT_CLASS.LAST]
     # To set a specific threshold
     detection_parameters_rt.object_class_detection_confidence_threshold[sl.OBJECT_CLASS.PERSON] = detection_confidence
     detection_parameters_rt.object_class_detection_confidence_threshold[sl.OBJECT_CLASS.VEHICLE] = detection_confidence
     detection_parameters_rt.object_class_detection_confidence_threshold[sl.OBJECT_CLASS.BAG] = detection_confidence
+    detection_parameters_rt.object_class_detection_confidence_threshold[sl.OBJECT_CLASS.ANIMAL] = detection_confidence
+    detection_parameters_rt.object_class_detection_confidence_threshold[sl.OBJECT_CLASS.ELECTRONICS] = detection_confidence
+    detection_parameters_rt.object_class_detection_confidence_threshold[sl.OBJECT_CLASS.FRUIT_VEGITABLE] = detection_confidence
+    detection_parameters_rt.object_class_detection_confidence_threshold[sl.OBJECT_CLASS.SPORT] = detection_confidence
+
 
     if use_faceme:
         import faceme_wrapper
