@@ -22,7 +22,7 @@ def bbox_to_xyxy(bounding_box_2d, as_int=True):
 
     return ((xmin, ymin), (xmax, ymax))
 
-def bbox_to_xyzxyz(bounding_box_3d, as_int=True):
+def bbox_to_xyzxyz(bounding_box_3d, as_int=False):
     """
     4点の座標から、左上、右下の座標に変換する。
 
