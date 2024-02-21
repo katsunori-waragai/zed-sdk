@@ -201,7 +201,6 @@ def main():
                         id_counter.clear()
 
             # waragai
-            print("------")
             zed.retrieve_image(image_left, sl.VIEW.LEFT, sl.MEM.CPU, display_resolution)
             image_render_left = image_left.get_data()
             np.copyto(image_left_ocv, image_render_left)  # dst, src
@@ -241,7 +240,6 @@ def main():
                         else:
                             image_left_ocv = faceme_wrapper.putText_utf(image_left_ocv, unicode_text=name_to_view, org=(xl, yu), font_size=36, color=(255, 0, 0))
 
-                print(f"{id2person_name=}")
             if not opt.disable_gui:
                 zed.retrieve_measure(point_cloud, sl.MEASURE.XYZRGBA, sl.MEM.CPU, pc_resolution)
                 zed.get_position(cam_w_pose, sl.REFERENCE_FRAME.WORLD)  # cam_w_pos: camera world position
