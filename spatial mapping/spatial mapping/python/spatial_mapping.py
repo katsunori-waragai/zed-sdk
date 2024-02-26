@@ -109,7 +109,8 @@ def main():
                     zed.reset_positional_tracking(init_pose)
 
                     # Configure spatial mapping parameters
-                    spatial_mapping_parameters.resolution_meter = sl.SpatialMappingParameters().get_resolution_preset(sl.MAPPING_RESOLUTION.MEDIUM)
+                    # spatial_mapping_parameters.resolution_meter = sl.SpatialMappingParameters().get_resolution_preset(sl.MAPPING_RESOLUTION.MEDIUM)
+                    spatial_mapping_parameters.resolution_meter = sl.SpatialMappingParameters().get_resolution_preset(sl.MAPPING_RESOLUTION.FINE)
                     spatial_mapping_parameters.use_chunk_only = True
                     spatial_mapping_parameters.save_texture = True         # Set to True to apply texture over the created mesh
                     if opt.build_mesh:
