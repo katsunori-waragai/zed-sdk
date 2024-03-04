@@ -100,6 +100,7 @@ def main():
     body_param.enable_body_fitting = False            # Smooth skeleton move
     body_param.detection_model = sl.BODY_TRACKING_MODEL.HUMAN_BODY_FAST 
     body_param.body_format = sl.BODY_FORMAT.BODY_18  # Choose the BODY_FORMAT you wish to use
+    body_param.body_format = sl.BODY_FORMAT.BODY_70  # Choose the BODY_FORMAT you wish to use
 
     # Enable Object Detection module
     zed.enable_body_tracking(body_param)
