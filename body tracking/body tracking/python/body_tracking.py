@@ -30,6 +30,8 @@ import cv_viewer.tracking_viewer as cv_viewer
 import numpy as np
 import argparse
 
+import inspect
+
 def parse_args(init):
     if len(opt.input_svo_file)>0 and opt.input_svo_file.endswith(".svo"):
         init.set_from_svo_file(opt.input_svo_file)
@@ -98,7 +100,10 @@ def main():
     body_param = sl.BodyTrackingParameters()
     body_param.enable_tracking = True                # Track people across images flow
     body_param.enable_body_fitting = False            # Smooth skeleton move
-    body_param.detection_model = sl.BODY_TRACKING_MODEL.HUMAN_BODY_FAST 
+    body_param.detection_model = sl.BODY_TRACKING_MODEL.HUMAN_BODY_FAST
+
+    for k, v in inspect(sl.BODY_FORMAT):
+        print(k, v)
     body_param.body_format = sl.BODY_FORMAT.BODY_18  # Choose the BODY_FORMAT you wish to use
     body_param.body_format = sl.BODY_FORMAT.BODY_70  # Choose the BODY_FORMAT you wish to use
 
