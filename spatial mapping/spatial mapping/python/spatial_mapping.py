@@ -88,6 +88,9 @@ def main():
         map_type=map_type,
     )
 
+    for k, v in inspect.getmembers(spatial_mapping_parameters):
+        print(f"{k=} {v=}")
+
     tracking_state = sl.POSITIONAL_TRACKING_STATE.OFF
     mapping_state = sl.SPATIAL_MAPPING_STATE.NOT_ENABLED
 
