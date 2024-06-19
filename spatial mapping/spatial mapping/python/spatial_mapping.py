@@ -89,7 +89,7 @@ def main():
     )
 
     for k, v in inspect.getmembers(spatial_mapping_parameters):
-        if k.find("__") > -1:
+        if k.find("__") == -1:
             print(f"{k=} {v=}")
 
     tracking_state = sl.POSITIONAL_TRACKING_STATE.OFF
