@@ -75,6 +75,11 @@ def main():
         if k.find("__") == -1:
             print(f"{k}: {v}")
 
+    print(sl.SPATIAL_MAP_TYPE)
+    for k, v in inspect.getmembers(sl.SPATIAL_MAP_TYPE):
+        if k.find("__") == -1:
+            print(f"{k}: {v}")
+
     if 1:
         resolution = sl.MAPPING_RESOLUTION.HIGH
         mapping_range = sl.MAPPING_RANGE.AUTO
