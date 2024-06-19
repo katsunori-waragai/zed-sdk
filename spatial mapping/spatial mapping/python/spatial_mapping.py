@@ -65,11 +65,15 @@ def main():
         map_type = sl.SPATIAL_MAP_TYPE.FUSED_POINT_CLOUD
         pymesh = sl.FusedPointCloud()
 
+    print(sl.MAPPING_RESOLUTION)
     for k, v in inspect.getmembers(sl.MAPPING_RESOLUTION):
-        print(f"{k=} {v=}")
+        if k.find("__") == -1:
+            print(f"{k}: {v}")
 
+    print(sl.MAPPING_RANGE)
     for k, v in inspect.getmembers(sl.MAPPING_RANGE):
-        print(f"{k=} {v=}")
+        if k.find("__") == -1:
+            print(f"{k}: {v}")
 
     if 1:
         resolution = sl.MAPPING_RESOLUTION.HIGH
@@ -88,9 +92,10 @@ def main():
         map_type=map_type,
     )
 
+    print(f"{type(spatial_mapping_parameters)=}")
     for k, v in inspect.getmembers(spatial_mapping_parameters):
         if k.find("__") == -1:
-            print(f"{k=} {v=}")
+            print(f"{k}: {v}")
 
     tracking_state = sl.POSITIONAL_TRACKING_STATE.OFF
     mapping_state = sl.SPATIAL_MAPPING_STATE.NOT_ENABLED
