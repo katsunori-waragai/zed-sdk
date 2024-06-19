@@ -16,7 +16,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
-########################################################################
+######################################resolution##################################
 
 """
     This sample shows how to capture a real-time 3D reconstruction      
@@ -30,6 +30,7 @@ import pyzed.sl as sl
 import ogl_viewer.viewer as gl
 import argparse
 
+import inspect
 
 def main():
     init = sl.InitParameters()
@@ -64,9 +65,22 @@ def main():
         map_type = sl.SPATIAL_MAP_TYPE.FUSED_POINT_CLOUD
         pymesh = sl.FusedPointCloud()
 
+    for k, v in inspect.getmembers(sl.MAPPING_RESOLUTION):
+        print(f"{k=} {v=}")
+
+    for k, v in inspect.getmembers(sl.MAPPING_RANGE):
+        print(f"{k=} {v=}")
+
+    if 1:
+        resolution = sl.MAPPING_RESOLUTION.HIGH
+        mapping_range = sl.MAPPING_RANGE.AUTO
+    else:
+        resolution = sl.MAPPING_RESOLUTION.MEDIUM
+        mapping_range = sl.MAPPING_RANGE.MEDIUM
+
     spatial_mapping_parameters = sl.SpatialMappingParameters(
-        resolution=sl.MAPPING_RESOLUTION.MEDIUM,
-        mapping_range=sl.MAPPING_RANGE.MEDIUM,
+        resolution=resolution,
+        mapping_range=mapping_range,
         max_memory_usage=2048,
         save_texture=False,
         use_chunk_only=True,
