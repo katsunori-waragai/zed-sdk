@@ -93,7 +93,7 @@ def main():
     spatial_mapping_parameters = sl.SpatialMappingParameters(
         resolution=resolution,
         mapping_range=mapping_range,
-        max_memory_usage=4096,
+        max_memory_usage=8192,
         save_texture=False,
         use_chunk_only=True,
         reverse_vertex_order=False,
@@ -113,6 +113,8 @@ def main():
 
     runtime_parameters = sl.RuntimeParameters()
     runtime_parameters.confidence_threshold = 80
+    runtime_parameters.remove_saturated_areas = False
+    runtime_parameters.enable_fill_mode = True
 
     if view_conditions:
         print(type(runtime_parameters))
