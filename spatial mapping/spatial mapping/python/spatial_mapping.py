@@ -90,13 +90,14 @@ def main():
     spatial_mapping_parameters = sl.SpatialMappingParameters(
         resolution=resolution,
         mapping_range=mapping_range,
-        max_memory_usage=2048,
+        max_memory_usage=4096,
         save_texture=False,
         use_chunk_only=True,
         reverse_vertex_order=False,
         map_type=map_type,
     )
 
+    spatial_mapping_parameters.resolution_meter = 0.01
     print(f"{type(spatial_mapping_parameters)=}")
     for k, v in inspect.getmembers(spatial_mapping_parameters):
         if k.find("__") == -1:
