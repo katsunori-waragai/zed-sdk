@@ -52,3 +52,17 @@ Meshlab での表示との関係がわからない。
 ## 影響する項目
 enabl_fill_mode: Falseの場合、欠損値を生じる。Trueにすると欠損値を生じないが、物体の存在しない場所に点を生じる。
 removed_saturated_area: Trueにすると白飛びした画素が欠損値となる。例：ペットボトルの白いキャップが未検出になる。
+
+#### カメラのゲインの設定
+
+## depth計算の負荷を減らすには
+- これらのメソッドを利用して計算負荷を減らすこと
+- 以下のサイトの情報を参考にすること。
+https://www.stereolabs.com/docs/ros2/region-of-interest
+
+```commandline
+Camera.get_region_of_interest(self, Mat py_mat: Mat, resolution=Resolution(0, 0), module=MODULE.ALL) -> ERROR_CODE
+Camera.get_region_of_interest_auto_detection_status(self) -> REGION_OF_INTEREST_AUTO_DETECTION_STATE
+Camera.set_region_of_interest(self, Mat py_mat: Mat, modules=[MODULE.ALL]) -> ERROR_CODE
+Camera.start_region_of_interest_auto_detection(self, roi_param=RegionOfInterestParameters()) -> ERROR_CODE
+```

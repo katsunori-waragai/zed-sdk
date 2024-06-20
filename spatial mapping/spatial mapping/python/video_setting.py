@@ -1,5 +1,5 @@
 """
-inspect.getdoc()
+inspect.getdoc()　を使ってカメラの設定に関する情報を取得するためのスクリプト
 """
 import inspect
 
