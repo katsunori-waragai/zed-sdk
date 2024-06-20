@@ -65,20 +65,23 @@ def main():
         map_type = sl.SPATIAL_MAP_TYPE.FUSED_POINT_CLOUD
         pymesh = sl.FusedPointCloud()
 
-    print(sl.MAPPING_RESOLUTION)
-    for k, v in inspect.getmembers(sl.MAPPING_RESOLUTION):
-        if k.find("__") == -1:
-            print(f"{k}: {v}")
+    view_conditions = True
 
-    print(sl.MAPPING_RANGE)
-    for k, v in inspect.getmembers(sl.MAPPING_RANGE):
-        if k.find("__") == -1:
-            print(f"{k}: {v}")
+    if view_conditions:
+        print(sl.MAPPING_RESOLUTION)
+        for k, v in inspect.getmembers(sl.MAPPING_RESOLUTION):
+            if k.find("__") == -1:
+                print(f"{k}: {v}")
 
-    print(sl.SPATIAL_MAP_TYPE)
-    for k, v in inspect.getmembers(sl.SPATIAL_MAP_TYPE):
-        if k.find("__") == -1:
-            print(f"{k}: {v}")
+        print(sl.MAPPING_RANGE)
+        for k, v in inspect.getmembers(sl.MAPPING_RANGE):
+            if k.find("__") == -1:
+                print(f"{k}: {v}")
+
+        print(sl.SPATIAL_MAP_TYPE)
+        for k, v in inspect.getmembers(sl.SPATIAL_MAP_TYPE):
+            if k.find("__") == -1:
+                print(f"{k}: {v}")
 
     if 1:
         resolution = sl.MAPPING_RESOLUTION.HIGH
@@ -98,10 +101,12 @@ def main():
     )
 
     spatial_mapping_parameters.resolution_meter = 0.01
-    print(f"{type(spatial_mapping_parameters)=}")
-    for k, v in inspect.getmembers(spatial_mapping_parameters):
-        if k.find("__") == -1:
-            print(f"{k}: {v}")
+
+    if view_conditions:
+        print(f"{type(spatial_mapping_parameters)=}")
+        for k, v in inspect.getmembers(spatial_mapping_parameters):
+            if k.find("__") == -1:
+                print(f"{k}: {v}")
 
     tracking_state = sl.POSITIONAL_TRACKING_STATE.OFF
     mapping_state = sl.SPATIAL_MAPPING_STATE.NOT_ENABLED
@@ -109,10 +114,11 @@ def main():
     runtime_parameters = sl.RuntimeParameters()
     runtime_parameters.confidence_threshold = 80
 
-    print(type(runtime_parameters))
-    for k, v in inspect.getmembers(runtime_parameters):
-        if k.find("__") == -1:
-            print(f"{k}: {v}")
+    if view_conditions:
+        print(type(runtime_parameters))
+        for k, v in inspect.getmembers(runtime_parameters):
+            if k.find("__") == -1:
+                print(f"{k}: {v}")
 
     mapping_activated = False
 
