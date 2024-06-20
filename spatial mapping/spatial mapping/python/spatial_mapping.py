@@ -107,7 +107,12 @@ def main():
     mapping_state = sl.SPATIAL_MAPPING_STATE.NOT_ENABLED
 
     runtime_parameters = sl.RuntimeParameters()
-    runtime_parameters.confidence_threshold = 50
+    runtime_parameters.confidence_threshold = 80
+
+    print(type(runtime_parameters))
+    for k, v in inspect.getmembers(runtime_parameters):
+        if k.find("__") == -1:
+            print(f"{k}: {v}")
 
     mapping_activated = False
 
