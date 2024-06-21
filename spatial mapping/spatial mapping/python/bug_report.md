@@ -37,11 +37,11 @@ AttributeError: 'pyzed.sl.RegionOfInterestParameters' object has no attribute 'a
 ZED2i
 
 ## Environment
-Jetson AGX orin
-Ubuntu 20.04 LTS
-JetPack 5.1
-python3.8.10
-SDK version: 4.1.1
+OS: Ubuntu 20.04 LTS
+CPU: ARM
+GPU: Nvidia Jetson AGX orin
+ZED SDK version: 4.1.1
+Other info: JetPack 5.1, python3.8.10
 
 ## installer
 ZED_SDK_Tegra_L4T35.2_v4.1.1.zstd.run
